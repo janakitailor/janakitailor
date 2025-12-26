@@ -1,0 +1,443 @@
+/* ===================== 1. RESET ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===================== 2. BODY ===================== */
+body {
+    background-color: #0d0d0d;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: white;
+}
+
+/* ===================== 3. HEADER (LOGO IMAGE – RESPONSIVE) ===================== */
+.logo-header {
+    background-color: #7b0000; /* same as logo background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+}
+
+.logo-header img {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    display: block;
+}
+
+/* ===================== 4. HOME LAYOUT ===================== */
+.home {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 20px;
+    flex-wrap: wrap;
+}
+
+/* ===================== 5. CARD BASE ===================== */
+.card {
+    width: 280px;
+    background-color: #111;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    color: white;
+    position: relative;
+    transition: all 0.45s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    animation: glowPulse 3s infinite;
+}
+
+/* ===================== 6. CARD IMAGE ===================== */
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* ===================== 7. CARD TITLE ===================== */
+.card h2 {
+    background-color: maroon;
+    padding: 16px;
+    text-align: center;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+/* ===================== HOVER GLOW + LIFT ===================== */
+.card:hover {
+    transform: translateY(-12px) scale(1.08);
+    box-shadow:
+        0 0 15px rgba(128,0,0,0.9),
+        0 0 35px rgba(128,0,0,0.8),
+        0 0 70px rgba(128,0,0,0.6);
+}
+
+/* ===================== IMAGE ZOOM ===================== */
+.card:hover img {
+    transform: scale(1.15);
+}
+
+/* ===================== GLOW BORDER ===================== */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    border: 2px solid transparent;
+    transition: border 0.4s ease;
+}
+
+.card:hover::before {
+    border: 2px solid rgba(255,255,255,0.6);
+}
+
+/* ===================== TOUCH FEEDBACK ===================== */
+.card:active {
+    transform: scale(1.03);
+}
+
+/* ===================== AUTO GLOW ANIMATION ===================== */
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 10px rgba(128,0,0,0.4); }
+    50% { box-shadow: 0 0 35px rgba(128,0,0,0.9); }
+    100% { box-shadow: 0 0 10px rgba(128,0,0,0.4); }
+}
+
+/* ===================== GALLERY ===================== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+/* ===================== IMAGE BOX ===================== */
+.img-box {
+    position: relative;
+    border: 2px solid maroon;
+}
+
+/* ===================== GALLERY IMAGE ===================== */
+.img-box img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* ===================== IMAGE NUMBER ===================== */
+.number {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background-color: maroon;
+    padding: 4px 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* ===================== BACK BUTTON ===================== */
+.back {
+    display: inline-block;
+    margin: 15px;
+    padding: 8px 15px;
+    background-color: maroon;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* ===================== IMAGE POPUP ===================== */
+#popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#popup img {
+    max-width: 90%;
+    max-height: 90%;
+    border: 5px solid maroon;
+}
+
+/* ===================== SHARE BAR ===================== */
+#share-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: maroon;
+    color: white;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1001;
+}
+
+#share-bar a {
+    background-color: #25D366;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+#share-bar a:hover {
+    background-color: #1da851;
+}
+
+/* ===================== FOOTER TILES ===================== */
+.footer-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 30px 20px;
+    background-color: #111;
+    border-top: 3px solid maroon;
+}
+
+.footer-tile {
+    background-color: #1a1a1a;
+    border: 2px solid maroon;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.footer-tile h3 {
+    margin-bottom: 10px;
+    color: #ffcccc;
+}
+
+.footer-tile p {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.link-tile {
+    text-decoration: none;
+    color: white;
+}
+
+.footer-tile:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 0 12px rgba(128,0,0,0.8),
+        0 0 25px rgba(128,0,0,0.6);
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+    .logo-header img {
+        max-width: 100%;
+    }
+
+    .card {
+        width: 90%;
+        animation: none;
+    }
+}
+/* ===================== FOOTER TILE FIX ===================== */
+
+/* ICON TILE ALIGNMENT */
+.icon-tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* BIG CENTER ICON */
+.icon-tile .icon {
+    font-size: 52px;   /* BIG ICON */
+    margin-bottom: 10px;
+}
+
+/* ICON TILE TEXT */
+.icon-tile p {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* ADDRESS TILE LEFT ALIGN */
+.address-tile {
+    text-align: left;
+}
+
+/* RESPONSIVE FIX */
+@media (max-width: 768px) {
+    .icon-tile .icon {
+        font-size: 44px;
+    }
+}
+/* ===================== FOOTER ===================== */
+/* ===================== MOBILE FULL SCREEN FIX ===================== */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* ===================== PAGE TITLE (BIGGER & CENTER) ===================== */
+.page-title {
+    background-color: maroon;
+    text-align: center;
+    padding: 18px 10px;
+}
+
+.page-title span {
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* ===================== BACK BUTTON (BIG & EASY) ===================== */
+.back {
+    display: block;
+    width: fit-content;
+    margin: 15px auto;
+    padding: 12px 22px;
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+/* ===================== MOBILE GALLERY FULL WIDTH ===================== */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .img-box img {
+        height: 160px;
+    }
+}
+
+/* ===================== SHARE BAR (BIG & FINGER FRIENDLY) ===================== */
+#share-bar {
+    padding: 16px;
+    font-size: 16px;
+}
+
+#share-text {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* BIG WHATSAPP BUTTON */
+#whatsapp-share {
+    font-size: 18px;
+    padding: 14px 22px;
+    border-radius: 10px;
+}
+
+/* ===================== POPUP IMAGE FULL SCREEN ===================== */
+#popup img {
+    max-width: 95%;
+    max-height: 95%;
+}
+/* ===================== MOBILE SHARE BAR FIX ===================== */
+@media (max-width: 768px) {
+
+    #share-bar {
+        flex-direction: column;
+        gap: 14px;
+        /* extra bottom padding for safe-area on modern phones */
+        padding: 18px 18px calc(env(safe-area-inset-bottom, 18px) + 10px);
+        text-align: center;
+        align-items: stretch;
+    }
+
+    #share-text {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    #whatsapp-share {
+        width: 100%;
+        font-size: 22px;
+        padding: 18px 0;
+        min-height: 64px;
+        border-radius: 14px;
+        text-align: center;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+/* ===================== SHARE BAR – EXTRA BIG & EASY ===================== */
+#share-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: maroon;
+    color: white;
+    z-index: 1001;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    padding: 20px 16px calc(env(safe-area-inset-bottom, 20px) + 12px);
+}
+
+/* TEXT ABOVE BUTTON */
+#share-text {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ===================== WHATSAPP BUTTON – THUMB FRIENDLY ===================== */
+#whatsapp-share {
+    width: 100%;
+    max-width: 420px;
+
+    background-color: #25D366;
+    color: white;
+
+    font-size: 24px;              /* BIG TEXT */
+    font-weight: bold;
+
+    padding: 22px 0;              /* BIG HEIGHT */
+    min-height: 72px;             /* EASY TAP */
+
+    border-radius: 16px;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+/* PRESS FEEDBACK */
+#whatsapp-share:active {
+    transform: scale(0.97);
+}
+
+/* ===================== MOBILE ONLY EXTRA SAFETY ===================== */
+@media (max-width: 768px) {
+    #whatsapp-share {
+        font-size: 26px;
+        min-height: 78px;   /* VERY EASY TAP */
+    }
+}

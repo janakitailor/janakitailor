@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blouse Designs</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="page-title">
+    <span>Blouse Designs</span>
+</header>
+<a href="index.html" class="back">⬅ Back</a>
+<div class="gallery" id="gallery"></div>
+<div id="popup">
+    <img id="popup-img">
+</div>
+<div id="share-bar">
+    <span id="share-text">Selected Design</span>
+    <a id="whatsapp-share" target="_blank">🟢 Share on WhatsApp</a>
+</div>
+<script>
+const totalImages = 214;
+const phoneNumber = "9025148554";
+/* 🔴 CHANGE THIS AFTER HOSTING */
+const siteURL = "https://janakitailor.github.io/janaki";
+const gallery = document.getElementById("gallery");
+const popup = document.getElementById("popup");
+const popupImg = document.getElementById("popup-img");
+const shareBar = document.getElementById("share-bar");
+const shareText = document.getElementById("share-text");
+const whatsappShare = document.getElementById("whatsapp-share");
+for (let i = 1; i <= totalImages; i++) {
+    const box = document.createElement("div");
+    box.className = "img-box";
+    box.innerHTML = `
+        <span class="number">${i}</span>
+        <img src="blouse/${i}.jpg" onclick="selectDesign(${i})">
+    `;
+    gallery.appendChild(box);
+}
+function selectDesign(number) {
+   const imageLink = `${siteURL}/images/blouse/${number}.jpg`;
+    popup.style.display = "flex";
+    popupImg.src = `blouse/${number}.jpg`;
+    const message =
+`Hello Janaki Tailor,
+I like Blouse Design No: ${number}
+Image: ${imageLink}`;
+    whatsappShare.href =
+        `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    shareText.textContent = `Selected Design No: ${number}`;
+    shareBar.style.display = "flex";
+}
+popup.onclick = () => popup.style.display = "none";
+</script>
+</body>
+</html>

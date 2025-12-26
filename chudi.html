@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chudidhar Designs</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- PAGE TITLE -->
+<header class="page-title">
+    <span>Chudidhar Designs</span>
+</header>
+
+<!-- BACK BUTTON -->
+<a href="index.html" class="back">⬅ Back</a>
+
+<!-- GALLERY -->
+<div class="gallery" id="gallery"></div>
+
+<!-- IMAGE POPUP -->
+<div id="popup">
+    <img id="popup-img">
+</div>
+
+<!-- SHARE BAR -->
+<div id="share-bar">
+    <span id="share-text">Selected Design</span>
+    <a id="whatsapp-share" target="_blank">🟢 Share on WhatsApp</a>
+</div>
+
+<script>
+/* ================= CONFIG ================= */
+const totalImages = 56;                 // 🔴 Change when you add images
+const phoneNumber = "9025148554";
+const siteURL = "https://janakitailor.github.io/janaki"; // live URL
+
+/* ================= ELEMENTS ================= */
+const gallery = document.getElementById("gallery");
+const popup = document.getElementById("popup");
+const popupImg = document.getElementById("popup-img");
+const shareBar = document.getElementById("share-bar");
+const shareText = document.getElementById("share-text");
+const whatsappShare = document.getElementById("whatsapp-share");
+
+/* ================= LOAD IMAGES ================= */
+for (let i = 1; i <= totalImages; i++) {
+    const box = document.createElement("div");
+    box.className = "img-box";
+    box.innerHTML = `
+        <span class="number">${i}</span>
+        <img src="chudi/${i}.jpg" onclick="selectDesign(${i})">
+    `;
+    gallery.appendChild(box);
+}
+
+/* ================= SHARE FUNCTION ================= */
+function selectDesign(number) {
+    const imageLink = `${siteURL}/chudi/${number}.jpg`;
+
+    popup.style.display = "flex";
+    popupImg.src = `chudi/${number}.jpg`;
+
+    const message =
+`Hello Janaki Tailor,
+I like Chudidhar Design No: ${number}
+Image: ${imageLink}`;
+
+    whatsappShare.href =
+        `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    shareText.textContent = `Selected Design No: ${number}`;
+    shareBar.style.display = "flex";
+}
+
+/* ================= CLOSE POPUP ================= */
+popup.onclick = () => popup.style.display = "none";
+</script>
+
+</body>
+</html>
