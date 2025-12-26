@@ -27,6 +27,32 @@ body {
     height: auto;
     display: block;
 }
+.about {
+    background-color: #111;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #f2c94c;
+}
+
+.about-en,
+.about-ta {
+    max-width: 800px;
+    margin: 10px auto;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.about-ta {
+    font-size: 17px;
+    color: #ddd;
+}
+
 
 /* ===================== 4. HOME LAYOUT ===================== */
 .home {
@@ -35,6 +61,36 @@ body {
     gap: 40px;
     padding: 60px 20px;
     flex-wrap: wrap;
+}
+.services-inline {
+    background-color: #000;   /* dark strip below header */
+    color: #ffffff;
+    text-align: center;
+    padding: 18px 12px;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+}
+/* FADE IN ON SCROLL */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* IMAGE HOVER ZOOM */
+.card img,
+.gallery-item {
+    transition: transform 0.4s ease;
+}
+
+.card img:hover,
+.gallery-item:hover {
+    transform: scale(1.08);
 }
 
 /* ===================== 5. CARD BASE ===================== */
